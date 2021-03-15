@@ -21,8 +21,9 @@ body {
     margin: 20px;
     text-align: left;
     cursor: pointer;
+    word-break: break-all;
+    overflow-y: auto;
 }
-
 .user #user-id {
     display: flex;
     justify-content: space-between;

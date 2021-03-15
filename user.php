@@ -15,17 +15,50 @@
         public function __construct($id) {
             $this->id = $id;
         }
-    }
 
+        public function setpassword($_password) {
+            if(strlen($_password) < 20 || is_numeric($_password)) {
+                $this->password = 'Incorrect Password';
+            } else {
+                $this->password = $_password;
+            }
+        }
+        public function getPassword() {
+            return $this->password;
+        }
+        
+        public function setNumberPhone($_number_phone) {
+            if(strlen($_number_phone) == 10 && is_numeric($_number_phone)) {
+                $this->number_phone = $_number_phone;
+            } else {
+                $this->number_phone = 'Incorrect Number Phone';
+            }
+        }
+        public function getNumberPhone() {
+            return $this->number_phone;
+        }
+
+        public function setCI($_c_i) {
+            if(strlen($_c_i) == 16) {
+                $this->c_i = $_c_i;
+            } else {
+                $this->c_i = 'Incorrect C.I.';
+            }
+        }
+        public function getCI() {
+            return $this->c_i;
+        }
+
+    }
     $user1 = new User(1);
     $user1->avatar = 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/149038155_216786660165574_5889243031464037395_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=973b4a&_nc_ohc=ohr6wpYBTPcAX-T04qc&_nc_ht=scontent-mxp1-1.xx&oh=038feacda9146276d83c759ba054a1cf&oe=60761D40';
     $user1->name = 'Alex';
     $user1->surname = 'G.';
     $user1->email = 'alexg@coding.com';
-    $user1->password = 'fsda8d-fse51-DWD!FW';
-    $user1->number_phone = '3406758319';
+    $user1->setPassword('jhbT-34HSOJs-csa?"&fewfscdshfgd');
+    $user1->setNumberPhone('3406758657');
     $user1->address = 'Back-End st. 404';
-    $user1->c_i = 'ALX8952AEFE2978Q';
+    $user1->setCI('ALX8952AEFE2978Q');
     $user1->date_of_birth = '01/01/1900';
     $user1->birth_place = 'Saint Petersburg, Russia';
 
@@ -34,10 +67,10 @@
     $user2->name = 'Elon';
     $user2->surname = 'Musk';
     $user2->email = 'elonmusk@business.com';
-    $user2->password = 'defse4-dmka98-PRM?37';
-    $user2->number_phone = '3343955183';
+    $user2->setPassword('dww-3jhgeus-fgewg?"&');
+    $user2->setNumberPhone('3406758319');
     $user2->address = 'Full-Stack st. 404';
-    $user2->c_i = 'ELM8952YXA12780P';
+    $user2->setCI('ELM8952YXA12780P');
     $user2->date_of_birth = '28/06/1971';
     $user2->birth_place = 'Pretoria, Sudafrica';
 
@@ -46,10 +79,10 @@
     $user3->name = 'Jeff';
     $user3->surname = 'Bezos';
     $user3->email = 'jeffbezos@aws.com';
-    $user3->password = 'cas0-wqdwq3-fada?91';
-    $user3->number_phone = '3395716529';
+    $user3->setPassword('cjsdc-asdas-6d5wq-das9');
+    $user3->setNumberPhone('3406758319');
     $user3->address = 'Front-End st. 404';
-    $user3->c_i = 'JFB8952KS2780P3U';
+    $user3->setCI('JFB8952KS2780P3U');
     $user3->date_of_birth = '12/01/1964';
     $user3->birth_place = ' Albuquerque, New Mexico, USA';
 
@@ -76,8 +109,12 @@
         <div class="user">
 
             <div id="user-id">
-                <!-- ID -->
-                <?= $user->id ?>
+                
+                <div class="id">
+                    <i class="fas fa-user"></i>
+                    <!-- ID -->
+                    <?= $user->id ?>
+                </div>
                 <!-- Avatar -->
                 <img src="<?= $user->avatar?>" alt="">
             </div>
@@ -91,19 +128,20 @@
                 <p><i class="far fa-envelope"></i> <small><?= $user->email ?></small></p>
 
                 <!-- Password -->
-                <p><i class="fas fa-key"></i> <small><?= $user->password ?></small></p>
+                <p><i class="fas fa-key"></i> <small><?= $user->getPassword() ?></small></p>
 
                 <!-- Number Phone -->
-                <p><i class="fas fa-phone"></i> <small><?= $user->number_phone ?></small></p>
+                <p><i class="fas fa-phone"></i> <small><?= $user->getNumberPhone() ?></small></p>
 
                 <!-- Address -->
                 <p><i class="fas fa-map-marker-alt"></i> <small><?= $user->address ?></small></p>
 
                 <!-- C I -->
-                <p><i class="far fa-address-card"></i> <small><?= $user->c_i ?></small></p>
+                <p><i class="far fa-address-card"></i> <small><?= $user->getCI() ?></small></p>
 
                 <!-- Birth's date & place -->
                 <p><i class="fas fa-birthday-cake"></i> <small><?= $user->date_of_birth ?></small> - <small><?= $user->birth_place ?></small></p>
+
             </div>
 
         </div>
